@@ -2,10 +2,11 @@ import { TextInput, View, StyleSheet, Text } from "react-native";
 
 type InputBoxProps = {
   value: string;
+  ref: any;
   onChangeText: (text: string) => void;
 };
 
-export const InputBox = ({ value, onChangeText }: InputBoxProps) => {
+export const InputBox = ({ value, onChangeText, ref }: InputBoxProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.inputTitle}>Digite o cep desejado</Text>
@@ -15,6 +16,7 @@ export const InputBox = ({ value, onChangeText }: InputBoxProps) => {
         keyboardType="numeric"
         value={value}
         onChangeText={onChangeText}
+        ref={ref}
       />
     </View>
   );
