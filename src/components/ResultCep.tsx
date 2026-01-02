@@ -14,13 +14,15 @@ type ResultCepProps = {
 
 export const ResultCep = ({ cep }: ResultCepProps) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.textResult}>CEP: {cep?.cep}</Text>
-      <Text style={styles.textResult}>Logradouro: {cep?.logradouro}</Text>
-      <Text style={styles.textResult}>Bairro: {cep?.bairro}</Text>
-      <Text style={styles.textResult}>Cidade: {cep?.localidade}</Text>
-      <Text style={styles.textResult}>Estado: {cep?.estado}</Text>
-    </View>
+    cep && (
+      <View style={styles.container}>
+        <Text style={styles.textResult}>CEP: {cep.cep}</Text>
+        <Text style={styles.textResult}>Logradouro: {cep.logradouro}</Text>
+        <Text style={styles.textResult}>Bairro: {cep.bairro}</Text>
+        <Text style={styles.textResult}>Cidade: {cep.localidade}</Text>
+        <Text style={styles.textResult}>Estado: {cep.estado}</Text>
+      </View>
+    )
   );
 };
 
