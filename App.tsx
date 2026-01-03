@@ -7,6 +7,7 @@ import { ResultCep } from "./src/components/ResultCep";
 import { useState, useRef } from "react";
 import { TextInput } from "react-native";
 import { getCep } from "./src/services/getCep";
+import { cleanCep, searchInApi } from "./src/utils/cleanGet";
 
 type Cep = {
   cep: string;
@@ -22,23 +23,11 @@ export default function App() {
   const inputRef = useRef<TextInput>(null);
 
   async function handleGetCep() {
-    if (cep.length !== 8) {
-      alert("Digite um CEP válido com 8 digitos");
-      return;
-    }
-    try {
-      const response = await getCep({ cep });
-      setValueData(response);
-    } catch (error) {
-      console.log(error);
-    }
-    Keyboard.dismiss();
+    searchInApi({ cep, setValueData });
   }
 
   function handleClean() {
-    setCep("");
-    inputRef.current?.focus();
-    setValueData(null);
+    cleanCep({ setCep, inputRef, setValueData });
   }
 
   return (
